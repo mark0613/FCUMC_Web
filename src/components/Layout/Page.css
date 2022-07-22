@@ -1,0 +1,16 @@
+.site-layout .site-layout-background {
+    background: #fff;
+}
+[data-theme="dark"] .site-layout .site-layout-background {
+    background: #141414;
+}
+
+.ant-layout, .ant-layout-footer {
+    background-color: #DCE7F2;
+}
+
+@media (max-width:768px), print{
+    main {
+        padding: 0px 5px !important;
+    }
+}
