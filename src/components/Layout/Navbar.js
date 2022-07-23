@@ -57,8 +57,8 @@ export function Navbar() {
             <AppBar>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <IconButton aria-label="logo" href="/" className="logo">
-                            <AdbIcon sx={{ display: "flex", mr: 1 }}/>
+                        <IconButton aria-label="logo" href="/" disableRipple={true}>
+                            <img src="logo192.png" height={40} width={40} />
                         </IconButton>
                         <Typography sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} />
                         
