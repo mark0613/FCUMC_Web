@@ -22,7 +22,7 @@ const intro = [
         content : (
             <>
                 <p>來自MyFCU、Facebook、Instagram。</p>
-                <p>詳細可參考: 詳細來源</p>
+                <p>詳細可參考：<a href="#source">詳細來源</a></p>
             </>
         ),
         color: '#FFDBEB'
