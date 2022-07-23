@@ -44,7 +44,7 @@ export function Source() {
             direction='row'
             justifyContent='center'
             alignItems='center'
-            sx={{ height: 600 }}
+            sx={{ minHeight: 600 }}
         >
             <Grid item xs={0} lg={1} />
             <Grid item xs={12} lg={10}>

@@ -42,7 +42,7 @@ export function Intro() {
             direction='row'
             justifyContent='center'
             alignItems='center'
-            sx={{ height: 600 }}
+            sx={{ minHeight: 600 }}
         >
             <Grid item xs={0} lg={1} />
             <Grid item xs={12} lg={10}>
@@ -65,7 +65,7 @@ export function Intro() {
                     {intro.map(item => (
                     <Grid 
                         item 
-                        xs={12} md={6} lg={3}
+                        xs={12} sm={6} md={6} lg={3}
                     >
                         <Box
                             bgcolor={item.color}

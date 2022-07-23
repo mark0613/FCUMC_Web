@@ -23,7 +23,7 @@ export function Home() {
                     <Source />
                 </div>
             </Content>
-            <Box sx={{ height: "60px", bgcolor: "#FFFFFF" }} />
+            <Box sx={{ height: "60px", bgcolor: {xs: "transparent", md: '#FFF'} }} />
         </Layout>
     )
 }

@@ -12,11 +12,12 @@ function wrap(str) {
                 marginRight: '15px',
                 display: 'inline-block',
                 fontWeight: 'bold',
+                fontSize: { xs: '25px', sm: '37px', md: '50px' },
                 '&:first-letter': {
                     textDecoration: 'underline',
                     color: '#3C51B6',
-                    fontSize: '60px',
-                }
+                    fontSize: { xs: '30px', sm: '42px', md: '60px' },
+                },
             }}
         >
             {text}
@@ -32,16 +33,26 @@ export function Topic() {
             direction='row'
             justifyContent='center'
             alignItems='center'
-            sx={{ height: 600 }}
+            sx={{ minHeight: 600 }}
         >
             <Grid item xs={0} lg={1} />
-            <Grid item xs={8} lg={5}>
-                <img src='logo512.png' />
+            <Grid item xs={12} lg={5}>
+                <Box
+                    component='img'
+                    alt='logo'
+                    src='logo512.png'
+                    sx={{
+                        border: 'solid 3px #3C51B6',
+                        borderRadius: "100%",
+                        maxHeight: { xs: '250px', sm: '300px', md: '400px', lg: '450px' },
+                    }}
+                >
+                </Box>
             </Grid>
-            <Grid item xs={8} lg={5}>
+            <Grid item xs={12} lg={5}>
                 <Box
                     sx={{
-                        textAlign: 'left',
+                        textAlign: {xs: 'center', lg: 'left'},
                     }}
                 >
                     <Typography variant='h3'>
