@@ -7,6 +7,7 @@ import { Navbar } from '../Layout';
 import { Topic } from './Topic';
 import { Intro } from './Intro';
 import { Source } from './Source';
+import { Contact } from './Contact';
 
 
 const { Content } = Layout;
@@ -21,6 +22,7 @@ export function Home() {
                     <Topic />
                     <Intro />
                     <Source />
+                    <Contact />
                 </div>
             </Content>
             <Box sx={{ height: "60px", bgcolor: {xs: "transparent", md: '#FFF'} }} />
