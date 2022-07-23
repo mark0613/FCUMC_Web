@@ -1,6 +1,7 @@
 import {
     Box,
     Grid,
+    Button,
 } from '@mui/material';
 
 const intro = [
@@ -22,7 +23,27 @@ const intro = [
         content : (
             <>
                 <p>來自MyFCU、Facebook、Instagram。</p>
-                <p>詳細可參考：<a href="#source">詳細來源</a></p>
+                <p>可參考：
+                    <Button 
+                        variant="text"
+                        disableRipple={true}
+                        onClick={
+                            _ => document
+                                .getElementById("source")
+                                .scrollIntoView({ behavior: 'smooth' })
+                        }
+                        sx={{
+                            fontSize: '18px',
+                            textDecoration: 'underline',
+                            '&:hover' : {
+                                bgcolor: 'transparent',
+                                textDecoration: 'underline',
+                            },
+                        }}
+                    >
+                        詳細來源
+                    </Button>
+                </p>
             </>
         ),
         color: '#FFDBEB'

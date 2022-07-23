@@ -48,8 +48,8 @@ export function Source() {
         >
             <Grid item xs={0} lg={1} />
             <Grid item xs={12} lg={10}>
+                <Box id="source" height={64} />
                 <Box
-                    id="source"
                     sx={{
                         fontSize: '38px',
                         color: '#3C51B6',
