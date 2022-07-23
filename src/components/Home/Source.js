@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { 
     List,
     Tag,
@@ -12,6 +10,7 @@ import {
 
 import { sourceConfig } from '../Config';
 import { tagColor } from '../Config';
+
 
 const source = [];
 for (let item of sourceConfig) {
@@ -37,7 +36,6 @@ for (let item of sourceConfig) {
         }
     )
 }
-
 
 export function Source() {
     return (
