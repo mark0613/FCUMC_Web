@@ -1,15 +1,6 @@
 header {
     background-color: #3C51B6 !important;
 }
-.logo {
-    color: #fff !important;
-}
-.logo > svg {
-    margin: 0px !important;
-}
-.logo:hover {
-    background-color: #AFBDE4 !important;
-}
 .nav-menu {
     color: #fff !important;
     border: 3px solid #3C51B6 !important;
