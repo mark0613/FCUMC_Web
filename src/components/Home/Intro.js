@@ -72,7 +72,7 @@ export function Intro() {
                             sx={{
                                 height: 300,
                                 width: 300,
-                                padding: '40px',
+                                padding: '40px 50px',
                                 borderRadius: '100%'
                             }}
                         >
@@ -88,7 +88,8 @@ export function Intro() {
                             </Box>
                             <Box
                                 sx={{
-                                    fontSize: '18px'
+                                    fontSize: '18px',
+                                    textAlign: 'left',
                                 }}
                             >
                                 {item.content}
