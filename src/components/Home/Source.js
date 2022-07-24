@@ -6,6 +6,7 @@ import {
 import {
     Box,
     Grid,
+    Divider,
 } from '@mui/material';
 
 import { sourceConfig } from '../Config';
@@ -57,7 +58,7 @@ export function Source() {
                         marginBottom: "20px",
                     }}
                 >
-                    詳細來源
+                    <Divider>詳細來源</Divider>
                 </Box>
                 <List
                     itemLayout="horizontal"

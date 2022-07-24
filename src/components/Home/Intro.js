@@ -2,6 +2,7 @@ import {
     Box,
     Grid,
     Button,
+    Divider,
 } from '@mui/material';
 
 const intro = [
@@ -75,7 +76,7 @@ export function Intro() {
                         marginBottom: "20px",
                     }}
                 >
-                    網站簡介
+                    <Divider>網站簡介</Divider>
                 </Box>
                 <Grid
                     container
