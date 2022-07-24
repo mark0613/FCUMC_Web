@@ -24,9 +24,14 @@ export function Contact() {
                 >
                     聯絡我們
                 </Box>
-                <Box component='span' sx={{ textAlign: 'center' }}>
-                    <Box>Email : </Box>
-                    <Box>Github : </Box>
+                <Box component='span' sx={{ textAlign: {xs: 'center', lg: 'left'} }}>
+                    <Box>Email : project1618033988@gmail.com</Box>
+                    <Box>
+                        Github :&nbsp;
+                        <a href="https://github.com/mark0613/FCUMC_Web" style={{ textDecoration: 'underline' }}>
+                            https://github.com/mark0613/FCUMC_Web
+                        </a>
+                    </Box>
                 </Box>
                 <Box sx={{ height: 200 }} />
             </Grid>
