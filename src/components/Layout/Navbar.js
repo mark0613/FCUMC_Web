@@ -56,15 +56,15 @@ export function Navbar() {
             <AppBar>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <IconButton aria-label="logo" href="/" disableRipple={true}>
-                            <img src="logo192.png" height={40} width={40} alt="logo" />
+                        <IconButton aria-label="logo" href={process.env.PUBLIC_URL} disableRipple={true}>
+                            <img src={`${process.env.PUBLIC_URL}/logo192.png`} height={40} width={40} alt="logo" />
                         </IconButton>
                         <Typography sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} />
                         
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             {sourceConfig.map((page) => (
                                 <Button
-                                    href={`/${page["key"]}`}
+                                    href={`${process.env.PUBLIC_URL}/${page["key"]}`}
                                     key={page["key"]}
                                     onClick={handleCloseNavMenu}
                                     sx={{ 
@@ -115,7 +115,7 @@ export function Navbar() {
                                     <MenuItem key={page["key"]} onClick={handleCloseNavMenu}>
                                         <Typography textAlign="center">
                                             <Link 
-                                                href={`/${page["key"]}`}
+                                                href={`${process.env.PUBLIC_URL}/${page["key"]}`}
                                                 underline="none"
                                                 sx={{
                                                     color: '#000',
