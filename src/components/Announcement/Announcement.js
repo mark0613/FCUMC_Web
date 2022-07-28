@@ -2,32 +2,78 @@ import React, { useState, useEffect } from 'react';
 
 import 'antd/dist/antd.min.css';
 import { 
-    Table, 
+    Table,
+    Tag,
 } from 'antd';
 
-import Typography from '@mui/material/Typography';
+import {
+    Box,
+    Typography,
+} from '@mui/material';
 
 import { Page } from '../Layout';
 import { Spinner } from '../Spinner';
 import { Firebase } from '../Firebase';
-import { sourceConfig } from '../Config';
+import { 
+    sourceConfig,
+    tagColor,
+ } from '../Config';
 
 import './Announcement.css';
 
 const db = new Firebase();
 const tableColumns = [
     {
-      title: 'Title',
-      dataIndex: 'title',
-      key: 'title',
-      width: '80%',
+        title: "Title & Tags & Time",
+        dataIndex: "title",
+        key: "all",
+        render: (text, record, index) => {
+            return (
+                <>
+                    <Box
+                        sx={{
+                            fontSize: "18px",
+                            marginBottom: "10px",
+                        }}
+                    >
+                        {record.title}
+                    </Box>
+                    <Box
+                        sx={{
+                            marginBottom: "5px",
+                        }}
+                    >
+                        {record.tags}
+                    </Box>
+                    <Box>
+                        {record.time}
+                    </Box>
+                </>
+            )
+        },
+        responsive: ["xs"],
+    },
+    {
+        title: 'Title',
+        dataIndex: 'title',
+        key: 'title',
+        width: '60%',
+        responsive: ["sm"],
+    },
+    {
+        title: 'Tags',
+        dataIndex: 'tags',
+        key: 'tags',
+        width: '20%',
+        responsive: ["sm"],
     },
     {
         title: 'Time',
         dataIndex: 'time',
         key: 'time',
         width: '20%',
-      },
+        responsive: ["sm"],
+    },
 ];
 
 export function Announcement(props) {
@@ -46,6 +92,7 @@ export function Announcement(props) {
     useEffect(
         () => {
             db.getData(type, (vals)=>{
+                let result = [];
                 for (let key in vals) {
                     let title = (
                         <a 
@@ -57,15 +104,22 @@ export function Announcement(props) {
                             {vals[key]['title']}
                         </a>
                     )
+                    let tags = vals[key]["tags"].map(
+                        tag => <Tag 
+                            color={tagColor[vals[key]["class"]]}
+                        >
+                            {tag}
+                        </Tag>
+                    )
                     let time = vals[key]['time'];
-                    setData(array => [...array, {
-                            'key' : key,
-                            'title' : title,
-                            'time' : time,
-                        }]
-                    );
+                    result.push({
+                        key : key,
+                        title : title,
+                        tags : tags,
+                        time : time,
+                    })
                 }
-                data.sort((a, b) => {
+                result.sort((a, b) => {
                     if (a['time'] > b['time']) {
                         return -1;
                     }
@@ -84,6 +138,7 @@ export function Announcement(props) {
                         }
                     }
                 })
+                setData( _ => result);
                 setTable(_ => <Table 
                     columns={tableColumns}
                     dataSource={data}
