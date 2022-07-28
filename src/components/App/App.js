@@ -10,7 +10,7 @@ import { NotFoundPage } from '../NotFoundPage';
 
 export function App() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/fcumc">
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="myfcu" element={<Announcement type="myfcu" />} />
