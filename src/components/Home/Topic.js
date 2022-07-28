@@ -40,7 +40,7 @@ export function Topic() {
                 <Box
                     component='img'
                     alt='logo'
-                    src='logo512.png'
+                    src={`${process.env.PUBLIC_URL}/logo512.png`}
                     sx={{
                         border: 'solid 3px #3C51B6',
                         borderRadius: "100%",
