@@ -148,6 +148,12 @@ export function Announcement(props) {
                         position: ['bottomCenter'],
                         showSizeChanger: false,
                     }}
+                    onChange={
+                        _ => window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        })
+                    }
                 />)
                 setIsLoaded(_ => true);
             })
