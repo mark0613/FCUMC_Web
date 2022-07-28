@@ -34,7 +34,7 @@ export function Announcement(props) {
     let type = props.type;
     let topic = '';
     for (let option of sourceConfig) {
-        if (option['key'] == type) {
+        if (option['key'] === type) {
             topic = option['title'];
             break;
         }
@@ -52,6 +52,7 @@ export function Announcement(props) {
                             href={vals[key]['url']} 
                             className='announcement-link' 
                             target='_blank'
+                            rel="noreferrer noopener"
                         >
                             {vals[key]['title']}
                         </a>

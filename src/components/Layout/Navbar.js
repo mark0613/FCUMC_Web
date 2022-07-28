@@ -14,7 +14,6 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 
 import { sourceConfig } from '../Config/source';
 
@@ -50,7 +49,7 @@ export function Navbar() {
         setAnchorElNav(null);
     };
 
-    const currentPageClass = window.location.href.split("/").filter(_ => _ !="").slice(-1)[0];
+    const currentPageClass = window.location.href.split("/").filter(_ => _ !== "").slice(-1)[0];
     
     return (
         <ElevationScroll>
@@ -58,7 +57,7 @@ export function Navbar() {
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                         <IconButton aria-label="logo" href="/" disableRipple={true}>
-                            <img src="logo192.png" height={40} width={40} />
+                            <img src="logo192.png" height={40} width={40} alt="logo" />
                         </IconButton>
                         <Typography sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} />
                         
@@ -76,7 +75,7 @@ export function Navbar() {
                                         fontSize: '1rem',
                                         margin: '0 7px !important',
                                     }}
-                                    className={currentPageClass==page["key"] ? "nav-menu nav-active" : "nav-menu"}
+                                    className={currentPageClass===page["key"] ? "nav-menu nav-active" : "nav-menu"}
                                 >
                                     {page["title"]}
                                 </Button>
