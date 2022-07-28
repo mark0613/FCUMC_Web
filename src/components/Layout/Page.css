@@ -9,8 +9,12 @@
     background-color: #DCE7F2;
 }
 
+
 @media (max-width:768px), print{
     main {
         padding: 0px 5px !important;
+    }
+    .ant-layout-footer {
+        padding: 24px 10px !important;
     }
 }
