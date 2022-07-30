@@ -24,7 +24,7 @@ import './Announcement.css';
 const db = new Firebase();
 const tableColumns = [
     {
-        title: "Title & Tags & Time",
+        title: <span style={{ fontSize: "22px" }}>Information</span>,
         dataIndex: "title",
         key: "all",
         render: (text, record, index) => {
@@ -100,6 +100,7 @@ export function Announcement(props) {
                             className='announcement-link' 
                             target='_blank'
                             rel="noreferrer noopener"
+                            style={{ fontSize: "16px" }}
                         >
                             {vals[key]['title']}
                         </a>
@@ -107,6 +108,7 @@ export function Announcement(props) {
                     let tags = vals[key]["tags"].map(
                         tag => <Tag 
                             color={tagColor[vals[key]["class"]]}
+                            style={{ fontSize: "15px", padding: "4px" }}
                         >
                             {tag}
                         </Tag>

@@ -26,7 +26,7 @@ for (let item of sourceConfig) {
                     padding: "8px"
                 }}
             >
-                <a href={data.link}>{data.title}</a>
+                <a href={data.link} style={{ color: 'inherit' }}>{data.title}</a>
             </Tag>
         )
     }

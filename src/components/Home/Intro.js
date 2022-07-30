@@ -26,11 +26,11 @@ const intro = [
                 <p>來自MyFCU、Facebook、Instagram。</p>
                 <p>可參考：
                     <Button 
-                        variant="text"
+                        variant='text'
                         disableRipple={true}
                         onClick={
                             _ => document
-                                .getElementById("source")
+                                .getElementById('source')
                                 .scrollIntoView({ behavior: 'smooth' })
                         }
                         sx={{
@@ -52,7 +52,7 @@ const intro = [
     {
         key : 'how',
         title : '相關技術',
-        content : '使用爬蟲撈取個網頁資料後存到資料庫，再以本網頁顯示資料庫內容。',
+        content : <p>爬蟲撈取各個網頁資料並儲存至資料庫，再以本網站整理並顯示撈取結果。</p>,
         color: '#FFF7E0'
     },
 ];
@@ -73,7 +73,7 @@ export function Intro() {
                         fontSize: '38px',
                         color: '#3C51B6',
                         fontWeight: 'bold',
-                        marginBottom: "20px",
+                        marginBottom: '100px',
                     }}
                 >
                     <Divider>網站簡介</Divider>
@@ -94,7 +94,7 @@ export function Intro() {
                             sx={{
                                 height: 300,
                                 width: 300,
-                                padding: '40px 50px',
+                                padding: '40px 48px 40px 52px',
                                 borderRadius: '100%'
                             }}
                         >
@@ -103,7 +103,7 @@ export function Intro() {
                                     fontSize: '26px',
                                     color: '#3C51B6',
                                     fontWeight: 'bold',
-                                    marginBottom: "20px",
+                                    marginBottom: '20px',
                                 }}
                             >
                                 {item.title}
