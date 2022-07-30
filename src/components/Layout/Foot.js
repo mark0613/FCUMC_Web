@@ -32,13 +32,19 @@ export function Foot() {
         <Footer style={{ textAlign: 'center' }}>
             <Box>
                 <Box component='span'>
-                    <IconButton sx={{ fontSize: '40px', color: '#000', margin: '0 10px' }}>
-                        <EmailIcon fontSize='inherit' onClick={() => clickEmailIcon()} />
+                    <IconButton 
+                        sx={{ fontSize: '40px', color: '#000', margin: '0 10px' }} 
+                        onClick={() => clickEmailIcon()}
+                    >
+                        <EmailIcon fontSize='inherit' />
                     </IconButton>
                 </Box>
                 <Box component='span'>
-                    <IconButton sx={{ fontSize: '40px', color: '#000', margin: '0 10px' }}>
-                        <GitHubIcon fontSize='inherit' onClick={() => clickGithubIcon()} />
+                    <IconButton 
+                        sx={{ fontSize: '40px', color: '#000', margin: '0 10px' }} 
+                        onClick={() => clickGithubIcon()}
+                    >
+                        <GitHubIcon fontSize='inherit' />
                     </IconButton>
                 </Box>
             </Box>

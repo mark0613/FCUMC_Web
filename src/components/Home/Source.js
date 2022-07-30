@@ -15,7 +15,7 @@ import { tagColor } from '../Config';
 
 const source = [];
 for (let item of sourceConfig) {
-    let title = <h1 style={{ fontSize: "26px" }}>{item.title}</h1>;
+    let title = <Box style={{ fontSize: "26px" }}>{item.title}</Box>;
     let description = []
     for (let data of item.data) {
         description.push(

@@ -2,20 +2,22 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
-import Menu from '@mui/material/Menu';
+import {
+    AppBar,
+    Box,
+    Button,
+    Container,
+    IconButton,
+    Link,
+    Menu,
+    MenuItem,
+    Toolbar,
+    Typography,
+    useScrollTrigger,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
-import MenuItem from '@mui/material/MenuItem';
 
-import { sourceConfig } from '../Config/source';
+import { sourceConfig } from '../Config';
 
 import './Navbar.css';
 
