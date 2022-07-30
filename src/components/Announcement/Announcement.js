@@ -118,10 +118,10 @@ function createTable(data) {
 }
 
 export function Announcement(props) {
-    let type = props.type;
+    let sourceName = props.sourceName;
     let topic = '';
     for (let option of sourceConfig) {
-        if (option['key'] === type) {
+        if (option['key'] === sourceName) {
             topic = option['title'];
             break;
         }
@@ -132,7 +132,7 @@ export function Announcement(props) {
 
     useEffect(
         () => {
-            db.getData(type, (vals)=>{
+            db.getData(sourceName, (vals)=>{
                 let result = [];
                 for (let key in vals) {
                     let title = (

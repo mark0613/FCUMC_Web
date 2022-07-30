@@ -13,9 +13,9 @@ export function App() {
         <BrowserRouter basename="/fcumc">
             <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route path="myfcu" element={<Announcement type="myfcu" />} />
-                <Route path="fb" element={<Announcement type="fb" />} />
-                <Route path="ig" element={<Announcement type="ig" />} />
+                <Route path="myfcu" element={<Announcement sourceName="myfcu" />} />
+                <Route path="fb" element={<Announcement sourceName="fb" />} />
+                <Route path="ig" element={<Announcement sourceName="ig" />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </BrowserRouter>
