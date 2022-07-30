@@ -8,12 +8,14 @@ import {
 
 import {
     Box,
+    Grid,
     Typography,
 } from '@mui/material';
 
 import { Page } from '../Layout';
 import { Spinner } from '../Spinner';
 import { Firebase } from '../Firebase';
+import { TagSelector } from '../TagSelector';
 import { 
     sourceConfig,
     tagColor,
@@ -75,6 +77,7 @@ const tableColumns = [
         responsive: ["sm"],
     },
 ];
+var source = [];
 
 function dataSoter(a, b) {
     if (a['time'] > b['time']) {
@@ -117,18 +120,73 @@ function createTable(data) {
     )
 }
 
+function generateOptions() {
+    const optionClass = [];
+    const options = [];
+    for (let item of source) {
+        if (!optionClass.includes(item.class)) {
+            optionClass.push(item.class);
+            options.push({
+                label: item.class,
+                options: [],
+            })
+        }
+        let index = optionClass.indexOf(item.class);
+        options[index].options.push({
+            label: item.title,
+            value: item.title,
+            id: `${options[index].label}-${item.title}`,
+        })
+    }
+    return options;
+}
+
+function getCookies() {
+    let tmp = document.cookie.split("; ").map(item => item.split("="));
+    let cookies = {};
+    for (let cookie of tmp) {
+        cookies[cookie[0]] = cookie[1];
+    }
+    return cookies;
+}
+
+function getDefaultValue() {
+    let customTag = [];
+    let cookies = getCookies();
+    if (!cookies.hasOwnProperty("tags") || cookies.tags === undefined) {
+        customTag.push("一般");
+    }
+    else {
+        customTag = cookies.tags.split(",");
+    }
+    console.log(customTag);
+
+    const defaultValue = [];
+    for (let item of source) {
+        for (let tag of customTag) {
+            if (tag === item.class || tag === item.title) {
+                defaultValue.push(item.title);
+                break;
+            }
+        }
+    }
+    return defaultValue;
+}
+
 export function Announcement(props) {
     let sourceName = props.sourceName;
     let topic = '';
-    for (let option of sourceConfig) {
-        if (option['key'] === sourceName) {
-            topic = option['title'];
+    for (let item of sourceConfig) {
+        if (item.key === sourceName) {
+            topic = item.title;
+            source = item.data;
             break;
         }
     }
     const [isLoaded, setIsLoaded] = useState(false);
     const [data, setData] = useState([]);
     const [table, setTable] = useState(null);
+    const [tagFilter, setTagFilter] = useState([]);
 
     useEffect(
         () => {
@@ -166,16 +224,58 @@ export function Announcement(props) {
                 setData( _ => result);
                 setTable(_ => createTable(data));
                 setIsLoaded(_ => true);
+                setTagFilter(_ => getDefaultValue());
             })
         },
         [isLoaded]
     );
+    useEffect(
+        () => {
+            let filteredData = [];
+            for (let d of data) {
+                for (let tag of d["tags"]) {
+                    if (tagFilter.includes(tag.props.children)) {
+                        filteredData.push(d);
+                        break;
+                    }
+                }
+            }
+            setTable(_ => createTable(filteredData));
+        },
+        [JSON.stringify(tagFilter)]
+    )
 
     const content = (
         <>
             <Typography variant='h5' sx={{ display: { xs: 'block', md: 'none' }, marginBottom: '20px' }}>
                 {topic}
             </Typography>
+            <Grid
+                container
+                direction='row'
+                justifyContent='center'
+                alignItems='center'
+            >
+                <Grid item xs={1} lg={8} />
+                <Grid item xs={10} lg={4}>
+                    {
+                        isLoaded ? 
+                        <TagSelector 
+                            sourceName={props.sourceName}
+                            options={generateOptions()}
+                            onChange={(options) => {
+                                setTagFilter(_ => options);
+                                document.cookie="tags=";
+                                document.cookie=`tags=${options.join(",")}`;
+                            }}
+                            defaultValue={tagFilter}
+                        /> :
+                        ""
+                    }
+                </Grid>
+                <Grid item xs={1} lg={0} />
+            </Grid>
+            <br />
             { isLoaded ? table : <Spinner size='150' /> }
         </>
     )
