@@ -76,6 +76,47 @@ const tableColumns = [
     },
 ];
 
+function dataSoter(a, b) {
+    if (a['time'] > b['time']) {
+        return -1;
+    }
+    else if (a['time'] < b['time']) {
+        return 1
+    }
+    else {
+        if (a['title'] > b['title']) {
+            return -1;
+        }
+        else if (a['title'] < b['title']) {
+            return 1;
+        }
+        else {
+            return 0
+        }
+    }
+}
+
+function createTable(data) {
+    return (
+        <Table 
+            columns={tableColumns}
+            dataSource={data}
+            pagination={{ 
+                defaultPageSize: '12',
+                pageSizeOptions: ['8', '16', '32', '64', '128'],
+                position: ['bottomCenter'],
+                showSizeChanger: false,
+            }}
+            onChange={
+                _ => window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                })
+            }
+        />
+    )
+}
+
 export function Announcement(props) {
     let type = props.type;
     let topic = '';
@@ -121,47 +162,15 @@ export function Announcement(props) {
                         time : time,
                     })
                 }
-                result.sort((a, b) => {
-                    if (a['time'] > b['time']) {
-                        return -1;
-                    }
-                    else if (a['time'] < b['time']) {
-                        return 1
-                    }
-                    else {
-                        if (a['title'] > b['title']) {
-                            return -1;
-                        }
-                        else if (a['title'] < b['title']) {
-                            return 1;
-                        }
-                        else {
-                            return 0
-                        }
-                    }
-                })
+                result.sort(dataSoter)
                 setData( _ => result);
-                setTable(_ => <Table 
-                    columns={tableColumns}
-                    dataSource={data}
-                    pagination={{ 
-                        defaultPageSize: '12',
-                        pageSizeOptions: ['8', '16', '32', '64', '128'],
-                        position: ['bottomCenter'],
-                        showSizeChanger: false,
-                    }}
-                    onChange={
-                        _ => window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        })
-                    }
-                />)
+                setTable(_ => createTable(data));
                 setIsLoaded(_ => true);
             })
         },
         [isLoaded]
     );
+
     const content = (
         <>
             <Typography variant='h5' sx={{ display: { xs: 'block', md: 'none' }, marginBottom: '20px' }}>
