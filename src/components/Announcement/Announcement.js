@@ -153,13 +153,9 @@ function getCookies() {
 function getDefaultValue() {
     let customTag = [];
     let cookies = getCookies();
-    if (!cookies.hasOwnProperty("tags") || cookies.tags === undefined) {
-        customTag.push("一般");
-    }
-    else {
+    if (cookies.hasOwnProperty("tags") && cookies.tags !== undefined) {
         customTag = cookies.tags.split(",");
     }
-    console.log(customTag);
 
     const defaultValue = [];
     for (let item of source) {
@@ -240,6 +236,9 @@ export function Announcement(props) {
                     }
                 }
             }
+            if (filteredData.length === 0) {
+                filteredData = data;
+            }
             setTable(_ => createTable(filteredData));
         },
         [JSON.stringify(tagFilter)]
@@ -265,12 +264,11 @@ export function Announcement(props) {
                             options={generateOptions()}
                             onChange={(options) => {
                                 setTagFilter(_ => options);
-                                document.cookie="tags=";
                                 document.cookie=`tags=${options.join(",")}`;
                             }}
                             defaultValue={tagFilter}
                         /> :
-                        ""
+                        <></>
                     }
                 </Grid>
                 <Grid item xs={1} lg={0} />
